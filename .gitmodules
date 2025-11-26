@@ -1,0 +1,9 @@
+[submodule "esmini"]
+	path = esmini
+	url = https://github.com/esmini/esmini.git
+[submodule "openmcx"]
+	path = openmcx
+	url = https://github.com/eclipse-openmcx/openmcx.git
+[submodule "asam-openx-assets"]
+	path = asam-openx-assets
+	url = https://github.com/Persival-GmbH/asam-openx-assets.git
