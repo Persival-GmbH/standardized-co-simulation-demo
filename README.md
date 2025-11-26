@@ -51,7 +51,16 @@ Follow these steps to build all components:
 
 Run a co-simulation with the co-simulation framework OpenMCx.
 Choose one of the pre-defined system structure definitions in the `ssds` folder.
-For example, to run the `esmini-lidar_model-tracefilewriter` example:
+
+As a minimal example, run the `esmini-tracefilewriter` example.
+It will load the German Highway Demo scenario from the ASAM OpenX Assets and store the simulation result as an ASAM OSI SensorView trace file.
+This trace file will contain the ground truth moving objects including model references to ASAM OpenMATERIAL 3D asset files.
+
+```bash
+./tools/openmcx/install/openmcx ./ssds/esmini-tracefilewriter.ssd
+```
+
+For a more advanced example including a physical lidar model, run the `esmini-lidar_model-tracefilewriter` system structure definition.
 
 ```bash
 ./tools/openmcx/install/openmcx ./ssds/esmini-lidar_model-tracefilewriter.ssd
