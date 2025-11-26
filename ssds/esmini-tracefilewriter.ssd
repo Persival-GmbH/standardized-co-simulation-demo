@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssd:SystemStructureDescription version="1.0" name="Root-System" generationTool="manual" generationDateAndTime="2025-11-26T11:13:0Z" xmlns:ssc="http://ssp-standard.org/SSP1/SystemStructureCommon" xmlns:ssb="http://ssp-standard.org/SSP1/SystemStructureSignalDictionary" xmlns:ssd="http://ssp-standard.org/SSP1/SystemStructureDescription" xmlns:ssv="http://ssp-standard.org/SSP1/SystemStructureParameterValues" xmlns:ssm="http://ssp-standard.org/SSP1/SystemStructureParameterMapping">
+    <ssd:System name="Root-System">
+        <ssd:ParameterBindings>
+            <ssd:ParameterBinding>
+                <ssd:ParameterValues>
+                    <ssv:ParameterSet version="1.0" name="Parameter-Set">
+                        <ssv:Parameters/>
+                    </ssv:ParameterSet>
+                </ssd:ParameterValues>
+            </ssd:ParameterBinding>
+        </ssd:ParameterBindings>
+        <ssd:Elements>
+            <ssd:Component type="application/x-fmu-sharedlibrary" source="../../fmus/esmini.fmu" implementation="CoSimulation" name="esmini" description="esmini scnario player packaged as OSMP FMU outputting an osi3::SensorView with GoundTruth from the scenario">
+                <ssd:Connectors>
+                    <ssd:Connector name="OSMPSensorViewOut.base.lo" kind="output">
+                        <ssc:Integer/>
+                        <ssd:ConnectorGeometry x="1.0" y="0.75"/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorViewOut.base.hi" kind="output">
+                        <ssc:Integer/>
+                        <ssd:ConnectorGeometry x="1.0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorViewOut.size" kind="output">
+                        <ssc:Integer/>
+                        <ssd:ConnectorGeometry x="1.0" y="0.28125"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="-493.0" y1="-233.0" x2="-110.0" y2="-7.0"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding>
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet version="1.0" name="Parameter-Set">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="xosc_path" description="">
+                                        <ssv:String value="/opt/3d-assets/xosc/legacy_OpenMATERIAL/simple_road_two_vehicles.xosc"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="use_viewer" description="">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component type="application/x-fmu-sharedlibrary" source="../../fmus/sl-5-6-osi-trace-file-writer.fmu" implementation="CoSimulation" name="sl-5-6-osi-trace-file-writer" description="Write binary OSI trace files">
+                <ssd:Connectors>
+                    <ssd:Connector name="OSIIn.size" kind="input">
+                        <ssc:Integer/>
+                        <ssd:ConnectorGeometry x="0.0" y="0.25"/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSIIn.base.hi" kind="input">
+                        <ssc:Integer/>
+                        <ssd:ConnectorGeometry x="0.0" y="0.5"/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSIIn.base.lo" kind="input">
+                        <ssc:Integer/>
+                        <ssd:ConnectorGeometry x="0.0" y="0.75"/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ElementGeometry x1="838.927918" y1="-193.076269" x2="1038.927918" y2="-33.076269"/>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding>
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet version="1.0" name="Parameter-Set">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="trace_path" description="">
+                                        <ssv:String value="/tmp/"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="protobuf_version" description="">
+                                        <ssv:String value="2112"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="custom_name" description="">
+                                        <ssv:String value="simple_road_two_vehicles"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="message_type" description="">
+                                        <ssv:String value="sv"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="file_format" description="">
+                                        <ssv:String value="osi"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+        </ssd:Elements>
+        <ssd:Connections>
+            <ssd:Connection startElement="esmini" startConnector="OSMPSensorViewOut.base.lo" endElement="sl-5-6-osi-trace-file-writer" endConnector="OSIIn.base.lo" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="esmini" startConnector="OSMPSensorViewOut.base.hi" endElement="sl-5-6-osi-trace-file-writer" endConnector="OSIIn.base.hi" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="sl-5-6-osi-trace-file-writer" startConnector="OSIIn.size" endElement="esmini" endConnector="OSMPSensorViewOut.size" suppressUnitConversion="false"/>
+        </ssd:Connections>
+        <ssd:SystemGeometry x1="-693.0" y1="-433.0" x2="1238.927918" y2="193.0"/>
+    </ssd:System>
+    <ssd:DefaultExperiment startTime="0.0" stopTime="7.0">
+        <ssd:Annotations>
+            <!-- additional OpenMCx specific simulation parameters -->
+            <ssc:Annotation type="com.avl.model.connect.ssp.task"
+                            xmlns:mc="com.avl.model.connect.ssp.task">
+                <!-- sequential execution of component steps -->
+                <!-- synchronization time step size of 0.001 -->
+                <!-- simulation will end when the stopTime is reached -->
+                <mc:Task stepType="sequential" deltaTime="0.1" endType="end_time"/>
+            </ssc:Annotation>
+        </ssd:Annotations>
+    </ssd:DefaultExperiment>
+    <ssd:Annotations>
+    </ssd:Annotations>
+</ssd:SystemStructureDescription>
