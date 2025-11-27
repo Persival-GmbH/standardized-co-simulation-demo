@@ -35,7 +35,7 @@
                             <ssv:ParameterSet version="1.0" name="Parameter-Set">
                                 <ssv:Parameters>
                                     <ssv:Parameter name="xosc_path" description="Path to the ASAM OpenSCENARIO XML (.xosc) file to load">
-                                        <ssv:String value="../asam-openx-assets/xosc/german_highway_demo.xosc"/>
+                                        <ssv:String value="/opt/standardized-co-simulation-demo/asam-openx-assets/xosc/german_highway_demo.xosc"/>
                                     </ssv:Parameter>
                                     <ssv:Parameter name="use_viewer" description="Bool to enable or disable the esmini 3D viewer">
                                         <ssv:Boolean value="true"/>
@@ -66,7 +66,7 @@
                             <ssv:ParameterSet version="1.0" name="Parameter-Set">
                                 <ssv:Parameters>
                                     <ssv:Parameter name="trace_path" description="Path, where to put the generated trace file">
-                                        <ssv:String value="./"/>
+                                        <ssv:String value="/tmp"/>
                                     </ssv:Parameter>
                                     <ssv:Parameter name="protobuf_version" description="Protobuf version, with which the OSI messages are serialized as string, e.g. 2112 for v21.12 ">
                                         <ssv:String value="2112"/>

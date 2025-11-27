@@ -1,12 +1,22 @@
 # Standardized Co-Simulation Demo
 
-Coming soon...
+This repository demonstrates how to set up and run advanced co-simulation workflows for automotive and mobility applications using OpenMCx and esmini together with physical perception sensor models, while leveraging the ASAM OpenX standards for interoperability.
 
-- Setting up a co-simulation with OpenMCx
-- Using esmini in a co-simulation
-- Utilizing ASAM OpenDRIVE, OpenSCENARIO XML, OpenMATERIAL 3D and OSI data
-- Physical perception sensor simulation with standardized interfaces
+- **Co-Simulation Setup with OpenMCx**:
+Learn how to configure and orchestrate multi-domain simulations using OpenMCx as the backbone for distributed simulation environments.
 
+- **Integrating esmini**:
+Explore how esmini, a lightweight OpenSCENARIO player, can be integrated into co-simulation setups for scenario execution and visualization using the FMI standard and ASAM OSI.
+
+- **Showcasing ASAM OpenX Standards**
+Understand how OpenDRIVE, OpenSCENARIO XML, OpenMATERIAL 3D, and OSI work together to create a consistent and standardized simulation ecosystem.
+  - OpenDRIVE: Road network representation
+  - OpenSCENARIO XML: Scenario definition and behavior modeling
+  - OpenMATERIAL 3D: 3D geometries and material properties for realistic wavelength-dependent rendering
+  - OSI (Open Simulation Interface): Sensor and environment data exchange
+
+- **Physical Perception Sensor Simulation**:
+Use sensor models (e.g., lidar, radar, camera) as functional mock-up units with standardized interfaces for perception testing and validation in virtual environments.
 
 ## Build
 
@@ -34,18 +44,21 @@ Follow these steps to build all components:
     sudo ldconfig
     ```
   
-  - When using a sensor model: Nvidia driver (Nvidia RTX GPU required) >= 535 is required
-    
-    ```bash
-    sudo apt install nvidia-driver-575
-    sudo reboot
-    ```
+  - When using a sensor model: An Nvidia RTX GPU with an Nvidia driver >= 535 is required
 
 3. Build all components with build script
 
     ```bash
     ./build.sh
     ```
+
+4. Create a symlink to /opt. This will make file handling a lot easier, since absolute paths can be used instead of relative paths.
+
+    ```bash
+    ln -s $(pwd) /opt/standardized-co-simulation-demo
+    ```
+   
+    Depending on your system configuration, you might need to use `sudo` for this command.
 
 ## Usage
 
@@ -63,5 +76,15 @@ This trace file will contain the ground truth moving objects including model ref
 For a more advanced example including a physical lidar model, run the `esmini-lidar_model-tracefilewriter` system structure definition.
 
 ```bash
-./tools/openmcx/install/openmcx ./ssds/esmini-lidar_model-tracefilewriter.ssd
+./tools/openmcx/install/openmcx ./ssds/esmini-lidar_32layer-tracefilewriter.ssd
 ```
+
+The resulting ASAM OSI trace files will be written to the `./simulation_output` folder by default.
+This can be changed by modifying the `trace_path` parameter of the sl-5-6-osi-trace-file-writer fmu in the respective ssd file.
+
+## Visualize the Simulated Data
+
+For visualizing the generated ASAM OSI trace files in combination with the entire 3D environment in ASAM OpenMATERIAL 3D format, we recomment to use the Persival Simspector.
+You can download a free 30-day trial version from the Persival website: https://www.persival.de/simspector.
+
+<img src="doc/images/Simspector.png" alt="Simspector" width="800">
