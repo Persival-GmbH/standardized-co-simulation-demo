@@ -84,7 +84,7 @@ This can be changed by modifying the `trace_path` parameter of the sl-5-6-osi-tr
 
 ## Visualize the Simulated Data
 
-For visualizing the generated ASAM OSI trace files in combination with the entire 3D environment in ASAM OpenMATERIAL 3D format, we recomment to use the Persival Simspector.
+For visualizing the generated ASAM OSI trace files in combination with the entire 3D environment in ASAM OpenMATERIAL 3D format, we recommend to use the Persival Simspector.
 You can download a free 30-day trial version from the Persival website: https://www.persival.de/simspector.
 
 <img src="doc/images/Simspector.png" alt="Simspector" width="800">
