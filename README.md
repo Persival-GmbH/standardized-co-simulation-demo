@@ -23,11 +23,16 @@ Use sensor models (e.g., lidar, radar, camera) as functional mock-up units with 
 This demo repository has only been tested on Ubuntu >= 20.04.
 Follow these steps to build all components:
 
-1. Clone the repository
+1. Clone the repository with submodules
 
     ```bash
     git clone https://github.com/github.com/Persival-GmbH/standardized-co-simulation-demo.git --recurse-submodules
     cd standardized-co-simulation-demo
+    ```
+   If you did not directly clone with submodules, they can also be initialized and updated after cloning with:
+
+    ```bash
+    git submodule update --init --recursive
     ```
 
 2. Install dependencies
@@ -46,7 +51,7 @@ Follow these steps to build all components:
   
   - When using a sensor model: An Nvidia RTX GPU with an Nvidia driver >= 535 is required
 
-3. Build all components with build script
+3. Build all components with build script in the `standardized-co-simulation-demo` folder
 
     ```bash
     ./build.sh
