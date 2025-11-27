@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ssd:SystemStructureDescription version="1.0" name="Root-System" generationTool="manual"
+                                generationDateAndTime="2025-11-26T11:13:00Z"
+                                xmlns:ssc="http://ssp-standard.org/SSP1/SystemStructureCommon"
+                                xmlns:ssd="http://ssp-standard.org/SSP1/SystemStructureDescription"
+                                xmlns:ssv="http://ssp-standard.org/SSP1/SystemStructureParameterValues">
+    <ssd:System name="Root-System">
+        <ssd:ParameterBindings>
+            <ssd:ParameterBinding>
+                <ssd:ParameterValues>
+                    <ssv:ParameterSet version="1.0" name="Parameter-Set">
+                        <ssv:Parameters/>
+                    </ssv:ParameterSet>
+                </ssd:ParameterValues>
+            </ssd:ParameterBinding>
+        </ssd:ParameterBindings>
+        <ssd:Elements>
+            <ssd:Component type="application/x-fmu-sharedlibrary" source="../fmus/esmini.fmu" implementation="CoSimulation" name="esmini"
+                           description="esmini scenario player packaged as OSMP FMU outputting an osi3::SensorView with GoundTruth from the scenario">
+                <ssd:Connectors>
+                    <ssd:Connector name="OSMPSensorViewOut.base.lo" kind="output">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorViewOut.base.hi" kind="output">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorViewOut.size" kind="output">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding>
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet version="1.0" name="Parameter-Set">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="xosc_path" description="Path to the ASAM OpenSCENARIO XML (.xosc) file to load">
+                                        <ssv:String value="/opt/standardized-co-simulation-demo/asam-openx-assets/xosc/german_highway_demo.xosc"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="use_viewer" description="Bool to enable or disable the esmini 3D viewer">
+                                        <ssv:Boolean value="true"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component type="application/x-fmu-sharedlibrary" source="../fmus/lidar_32layer.fmu" implementation="CoSimulation" name="lidar_32layer" description="Sensor model of a generic 32 layer spinning lidar">
+                <ssd:Connectors>
+                    <ssd:Connector name="OSMPSensorViewIn.base.lo" kind="input">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorViewIn.base.hi" kind="input">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorViewIn.size" kind="input">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorDataOut.base.lo" kind="output">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorDataOut.base.hi" kind="output">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSMPSensorDataOut.size" kind="output">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding>
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet version="1.0" name="Internal Parameter-Set">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="mounting_pos_x" description="Mounting position x-coordinate of the sensor in meters, relative to the host vehicle coordinate frame (origin at the center of the rear axle)">
+                                        <ssv:Real value="1.2"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="mounting_pos_y" description="Mounting position y-coordinate of the sensor in meters, relative to the host vehicle coordinate frame (origin at the center of the rear axle)">
+                                        <ssv:Real value="0.0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="mounting_pos_z" description="Mounting position z-coordinate of the sensor in meters, relative to the host vehicle coordinate frame (origin at the center of the rear axle)">
+                                        <ssv:Real value="1.5"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="mounting_orient_yaw" description="Mounting orientation yaw angle of the sensor in rad, relative to the host vehicle coordinate frame (origin at the center of the rear axle)">
+                                        <ssv:Real value="0.0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="mounting_orient_pitch" description="Mounting orientation yaw angle of the sensor in rad, relative to the host vehicle coordinate frame (origin at the center of the rear axle)">
+                                        <ssv:Real value="0.0"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="mounting_orient_roll" description="Mounting orientation yaw angle of the sensor in rad, relative to the host vehicle coordinate frame (origin at the center of the rear axle)">
+                                        <ssv:Real value="0.0"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+            <ssd:Component type="application/x-fmu-sharedlibrary" source="../fmus/sl-5-6-osi-trace-file-writer.fmu" implementation="CoSimulation" name="sl-5-6-osi-trace-file-writer" description="Write binary OSI trace files">
+                <ssd:Connectors>
+                    <ssd:Connector name="OSIIn.size" kind="input">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSIIn.base.hi" kind="input">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                    <ssd:Connector name="OSIIn.base.lo" kind="input">
+                        <ssc:Integer/>
+                    </ssd:Connector>
+                </ssd:Connectors>
+                <ssd:ParameterBindings>
+                    <ssd:ParameterBinding>
+                        <ssd:ParameterValues>
+                            <ssv:ParameterSet version="1.0" name="Parameter-Set">
+                                <ssv:Parameters>
+                                    <ssv:Parameter name="trace_path" description="Path, where to put the generated trace file">
+                                        <ssv:String value="./simulation_output"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="protobuf_version" description="Protobuf version, with which the OSI messages are serialized as string, e.g. 2112 for v21.12 ">
+                                        <ssv:String value="2112"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="custom_name" description="Custom name as a suffix for the trace file name">
+                                        <ssv:String value="lidar_32layer"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="message_type" description="OSI message type string according to the Naming Convention. Currently supports: SensorData (sd), SensorView (sv), and GroundTruth (gt)">
+                                        <ssv:String value="sd"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="file_format" description="Format of the output trace file. Allowed values: mcap, osi, or txth">
+                                        <ssv:String value="osi"/>
+                                    </ssv:Parameter>
+                                    <ssv:Parameter name="omit_timestamp" description="Bool to disable setting the actual timestamp. If omit_timestamp is true, the timestamp is set to 00000000T000000Z.">
+                                        <ssv:Boolean value="false"/>
+                                    </ssv:Parameter>
+                                </ssv:Parameters>
+                            </ssv:ParameterSet>
+                        </ssd:ParameterValues>
+                    </ssd:ParameterBinding>
+                </ssd:ParameterBindings>
+            </ssd:Component>
+        </ssd:Elements>
+        <ssd:Connections>
+            <ssd:Connection startElement="esmini" startConnector="OSMPSensorViewOut.base.lo" endElement="lidar_32layer" endConnector="OSMPSensorViewIn.base.lo" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="esmini" startConnector="OSMPSensorViewOut.base.hi" endElement="lidar_32layer" endConnector="OSMPSensorViewIn.base.hi" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="esmini" startConnector="OSMPSensorViewOut.size" endElement="lidar_32layer" endConnector="OSMPSensorViewIn.size" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="lidar_32layer" startConnector="OSMPSensorDataOut.base.hi" endElement="sl-5-6-osi-trace-file-writer" endConnector="OSIIn.base.hi" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="lidar_32layer" startConnector="OSMPSensorDataOut.base.lo" endElement="sl-5-6-osi-trace-file-writer" endConnector="OSIIn.base.lo" suppressUnitConversion="false"/>
+            <ssd:Connection startElement="lidar_32layer" startConnector="OSMPSensorDataOut.size" endElement="sl-5-6-osi-trace-file-writer" endConnector="OSIIn.size" suppressUnitConversion="false"/>
+        </ssd:Connections>
+    </ssd:System>
+    <ssd:DefaultExperiment startTime="0.0" stopTime="30.0">
+        <ssd:Annotations>
+            <!-- additional OpenMCx specific simulation parameters -->
+            <ssc:Annotation type="com.avl.model.connect.ssp.task"
+                            xmlns:mc="com.avl.model.connect.ssp.task">
+                <mc:Task stepType="sequential" deltaTime="0.1" endType="end_time"/>
+            </ssc:Annotation>
+        </ssd:Annotations>
+    </ssd:DefaultExperiment>
+</ssd:SystemStructureDescription>

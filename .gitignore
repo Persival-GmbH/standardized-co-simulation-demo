@@ -1,0 +1,13 @@
+# IDE files
+.idea
+.vscode
+
+# Built FMUs
+fmus/esmini.fmu
+fmus/sl-5-6-osi-trace-file-writer.fmu
+
+# Simulation results
+*.osi
+results/*
+simulation.log
+log.txt

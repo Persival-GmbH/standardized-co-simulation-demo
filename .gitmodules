@@ -1,0 +1,12 @@
+[submodule "asam-openx-assets"]
+	path = asam-openx-assets
+	url = https://github.com/Persival-GmbH/asam-openx-assets.git
+[submodule "tools/esmini"]
+	path = tools/esmini
+	url = https://github.com/esmini/esmini.git
+[submodule "tools/openmcx"]
+	path = tools/openmcx
+	url = https://github.com/eclipse-openmcx/openmcx.git
+[submodule "tools/sl-5-6-osi-trace-file-writer"]
+	path = tools/sl-5-6-osi-trace-file-writer
+	url = https://github.com/openMSL/sl-5-6-osi-trace-file-writer.git
