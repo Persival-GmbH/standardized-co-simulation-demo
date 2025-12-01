@@ -69,7 +69,7 @@ Follow these steps to build all components:
     tar -xzf protobuf-all-21.12.tar.gz
     cd protobuf-21.12/
     ./configure --disable-shared CXXFLAGS="-fPIC"
-    make
+    make -j 12
     sudo make install
     sudo ldconfig
     ```
