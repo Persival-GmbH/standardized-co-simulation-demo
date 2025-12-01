@@ -76,6 +76,24 @@ Follow these steps to build all components:
   
   - When using a sensor model: An Nvidia RTX GPU with an Nvidia driver >= 535 is required
 
+  - esmini dependencies
+
+    ```bash
+    sudo apt install build-essential gdb ninja-build git pkg-config libgl1-mesa-dev libpthread-stubs0-dev libjpeg-dev libxml2-dev libpng-dev libtiff5-dev libgdal-dev libpoppler-dev libdcmtk-dev libgstreamer1.0-dev libgtk2.0-dev libcairo2-dev libpoppler-glib-dev libxrandr-dev libxinerama-dev curl cmake black
+    ```
+    
+  - OpenMCx dependencies
+
+    ```bash
+    sudo apt install libxml2-dev zlib1g-dev libzip-dev python-is-python3
+    ```
+
+  - Further dependencies
+
+    ```bash
+    sudo apt install liblz4-dev libzstd-dev
+    ```
+
 3. Build all components with build script in the `standardized-co-simulation-demo` folder
 
     ```bash
