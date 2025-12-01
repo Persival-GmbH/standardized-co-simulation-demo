@@ -51,7 +51,7 @@ Follow these steps to build all components:
 1. Clone the repository with submodules
 
     ```bash
-    git clone https://github.com/github.com/Persival-GmbH/standardized-co-simulation-demo.git --recurse-submodules
+    git clone https://github.com/Persival-GmbH/standardized-co-simulation-demo.git --recurse-submodules
     cd standardized-co-simulation-demo
     ```
    If you did not directly clone with submodules, they can also be initialized and updated after cloning with:
