@@ -136,3 +136,7 @@ For visualizing the generated ASAM OSI trace files in combination with the entir
 You can download a free 30-day trial version from the Persival website: https://www.persival.de/simspector.
 
 <img src="doc/images/simspector.png" alt="Simspector" width="800">
+
+## License
+
+This repository is licensed under the [Mozilla Public License 2.0](LICENSE), except for `fmus/lidar_32layer.fmu`, which is closed source and licensed under the terms in [fmus/lidar_32layer_LICENSE.md](fmus/lidar_32layer_LICENSE.md).

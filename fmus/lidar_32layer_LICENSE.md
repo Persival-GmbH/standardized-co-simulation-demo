@@ -1,6 +1,47 @@
-# 3rd Party Libraries and Licenses used by the Lidar 32 Layer Sensor Model
+# License for the Lidar 32 Layer Sensor Model FMU
 
-## Curl
+Copyright (c) Persival GmbH. All rights reserved.
+
+This license applies to the file `lidar_32layer.fmu` (the "Software").
+It does not apply to the rest of this repository, which is licensed under the Mozilla Public License 2.0.
+
+## 1. Grant of License
+
+Persival GmbH grants you a free of charge, worldwide, non-exclusive, perpetual license to
+
+- use the Software for any purpose, including commercial purposes, and
+- copy and redistribute the Software, provided that it is redistributed in unmodified form and together with this license file.
+
+The Software may be distributed together with, or as part of, works licensed under the Mozilla Public License 2.0 or other licenses.
+
+## 2. Restrictions
+
+You may not
+
+- modify, adapt, or create derivative works of the Software,
+- decompile, disassemble, or otherwise reverse engineer the Software, except to the extent that such activity is expressly permitted by applicable law notwithstanding this limitation,
+- remove or alter any copyright notices or license files distributed with the Software.
+
+No source code of the Software is provided under this license.
+
+## 3. Third-Party Components
+
+The Software contains third-party components that are subject to their own license terms, as listed in the appendix "Third-Party Licenses" below.
+In particular, in accordance with the NVIDIA OptiX End User License, the Software must only be executed on supported NVIDIA GPU hardware products that you separately obtain from NVIDIA or its affiliates.
+
+## 4. Disclaimer of Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+## 5. Limitation of Liability
+
+IN NO EVENT SHALL PERSIVAL GMBH BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE, EXCEPT WHERE SUCH LIABILITY CANNOT BE EXCLUDED UNDER APPLICABLE LAW.
+
+## Appendix: Third-Party Licenses
+
+The following third-party libraries are used by the Software and are subject to their respective licenses.
+
+### Curl
 COPYRIGHT AND PERMISSION NOTICE
 
 Copyright (c) 1996 - 2023, Daniel Stenberg, <daniel@haxx.se>, and many
@@ -24,11 +65,13 @@ Except as contained in this notice, the name of a copyright holder shall not
 be used in advertising or otherwise to promote the sale, use or other dealings
 in this Software without prior written authorization of the copyright holder.
 
-## Eigen
+### Eigen
 
 SPDX-License-Identifier: MPL-2.0
 
-## glad
+Source code: https://gitlab.com/libeigen/eigen
+
+### glad
 
 SPDX-License-Identifier: MIT
 
@@ -51,7 +94,7 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## KHR
+### KHR
 
 Copyright (c) 2008-2018 The Khronos Group Inc.
 
@@ -74,21 +117,25 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-## ASAM OSI
+### ASAM OSI
 
 SPDX-License-Identifier: MPL-2.0
 
-## ASAM OpenMATERIAL
+Source code: https://github.com/OpenSimulationInterface/open-simulation-interface
+
+### ASAM OpenMATERIAL
 
 SPDX-License-Identifier: MPL-2.0
 
-## OpenSSL
+Source code: https://github.com/asam-ev/OpenMATERIAL-3D
+
+### OpenSSL
 
 The OpenSSL toolkit stays under a double license, i.e. both the conditions of
 the OpenSSL License and the original SSLeay license apply to the toolkit.
 See below for the actual license texts.
 
-### OpenSSL License
+#### OpenSSL License
 
 Copyright (c) 1998-2019 The OpenSSL Project.  All rights reserved.
 
@@ -142,7 +189,7 @@ This product includes cryptographic software written by Eric Young
 Hudson (tjh@cryptsoft.com).
 
 
-### Original SSLeay License
+#### Original SSLeay License
 
 
 Copyright (C) 1995-1998 Eric Young (eay@cryptsoft.com)
@@ -201,14 +248,14 @@ derivative of this code cannot be changed.  i.e. this code cannot simply be
 copied and put under another distribution licence
 [including the GNU Public Licence.]
 
-## Nvidia OptiX
+### Nvidia OptiX
 
 Version: 7.6
 
 In accordance with the Nvidia OptiX End User License, the SMDL, and software incorporating the SMDL, must only be
 executed in supported NVIDIA GPU hardware products that you separately obtain from NVIDIA or its affiliates.
 
-## Tinygltf
+### Tinygltf
 
 SPDX-License-Identifier: MIT
 
@@ -232,7 +279,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## Nvidia OmmBaking
+### Nvidia OmmBaking
 
 Copyright (c) 2023, NVIDIA CORPORATION. All rights reserved.
 
@@ -260,7 +307,7 @@ OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-## xxHash Library
+### xxHash Library
 
 SPDX-License-Identifier: BSD-2-Clause
 
